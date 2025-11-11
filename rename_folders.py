@@ -59,6 +59,7 @@ def main():
         print("\nProcess complete.")
     if confirm == 'n':
         print("\nOperation cancelled. No changes were made.")
+        break
     else:
         print("Please enter 'y' or 'n'")
 
