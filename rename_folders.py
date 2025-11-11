@@ -12,10 +12,6 @@ def rename_folders_recursively(root_dir):
 
     print(f"Scanning directory: {root_dir}\n")
     
-    # We use topdown=False to walk from the bottom up.
-    # This is crucial so we rename child folders before their parents.
-    # If we renamed 'My Folder' to 'My_Folder' first, the path
-    # 'My Folder/My Subfolder' would break.
     for dirpath, dirnames, filenames in os.walk(root_dir, topdown=False):
         for dirname in dirnames:
             if replacedCharacter in dirname:
@@ -65,7 +61,7 @@ def main():
         print("\nOperation cancelled. No changes were made.")
     else:
         print("Please enter 'y' or 'n'")
-        
+
 def clearScreen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
