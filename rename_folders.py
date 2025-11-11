@@ -18,9 +18,9 @@ def rename_folders_recursively(root_dir):
     # 'My Folder/My Subfolder' would break.
     for dirpath, dirnames, filenames in os.walk(root_dir, topdown=False):
         for dirname in dirnames:
-            if " " in dirname:
+            if replacedCharacter in dirname:
                 old_path = os.path.join(dirpath, dirname)
-                new_name = dirname.replace(" ", "_")
+                new_name = dirname.replace(f"{replacedCharacter}", f"{newCharacter}")
                 new_path = os.path.join(dirpath, new_name)
                 
                 print(f"Renaming: '{old_path}'")
@@ -35,6 +35,8 @@ def rename_folders_recursively(root_dir):
 def main():
     # Get the target directory from the user
     target_directory = input("Please enter the full path to the directory you want to process: ")
+    replacedCharacter = input("Please enter the chacracter you would like to replace:")
+    newCharacter = input(f"Please enter the character you woukd like to replace '{replacedCharacter}':")
     
     # Clean up the path (e.g., remove trailing slashes or quotes)
     target_directory = target_directory.strip().strip("'\"")
