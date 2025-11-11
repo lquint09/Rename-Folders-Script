@@ -35,8 +35,11 @@ def rename_folders_recursively(root_dir):
 def main():
     # Get the target directory from the user
     target_directory = input("Please enter the full path to the directory you want to process: ")
+    clearScreen()
     replacedCharacter = input("Please enter the chacracter you would like to replace:")
+    clearScreen()
     newCharacter = input(f"Please enter the character you woukd like to replace '{replacedCharacter}':")
+    clearScreen()
     
     # Clean up the path (e.g., remove trailing slashes or quotes)
     target_directory = target_directory.strip().strip("'\"")
@@ -62,6 +65,9 @@ def main():
         print("\nOperation cancelled. No changes were made.")
     else:
         print("Please enter 'y' or 'n'")
+        
+def clearScreen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 if __name__ == "__main__":
     main()
