@@ -52,14 +52,16 @@ def main():
     print(f"{target_directory}")
     print("This action cannot be undone automatically.")
     
-    confirm = input("Are you sure you want to continue? (yes/no): ").lower().strip()
+    confirm = input("Are you sure you want to continue? (y/n): ").lower().strip()
     
-    if confirm == 'yes':
+    if confirm == 'y':
         print("\nStarting rename process...")
         rename_folders_recursively(target_directory)
         print("\nProcess complete.")
-    else:
+    if confirm == 'n':
         print("\nOperation cancelled. No changes were made.")
+    else:
+        print("Please enter 'y' or 'n'")
 
 if __name__ == "__main__":
     main()
