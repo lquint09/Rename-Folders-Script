@@ -34,7 +34,7 @@ def main():
     clearScreen()
     replacedCharacter = input("Please enter the chacracter you would like to replace:")
     clearScreen()
-    newCharacter = input(f"Please enter the character you woukd like to replace '{replacedCharacter}':")
+    newCharacter = input(f"Please enter the character you woukd like to replace '{replacedCharacter}' with:")
     clearScreen()
     
     # Clean up the path (e.g., remove trailing slashes or quotes)
@@ -47,7 +47,7 @@ def main():
         
     # Ask for confirmation before proceeding
     print("\n--- WARNING ---")
-    print(f"You are about to rename all subfolders containing spaces inside:")
+    print(f"You are about to rename all subfolders containing {replacedCharacter} inside:")
     print(f"{target_directory}")
     print("This action cannot be undone automatically.")
     
