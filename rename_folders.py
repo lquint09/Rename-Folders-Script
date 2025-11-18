@@ -14,9 +14,9 @@ def rename_folders_recursively(root_dir):
     
     for dirpath, dirnames, filenames in os.walk(root_dir, topdown=False):
         for dirname in dirnames:
-            if replacedCharacter in dirname:
+            if main.replacedCharacter in dirname:
                 old_path = os.path.join(dirpath, dirname)
-                new_name = dirname.replace(f"{replacedCharacter}", f"{newCharacter}")
+                new_name = dirname.replace(f"{main.replacedCharacter}", f"{main.newCharacter}")
                 new_path = os.path.join(dirpath, new_name)
                 
                 print(f"Renaming: '{old_path}'")
@@ -59,7 +59,6 @@ def main():
         print("\nProcess complete.")
     if confirm == 'n':
         print("\nOperation cancelled. No changes were made.")
-        break
     else:
         print("Please enter 'y' or 'n'")
 
