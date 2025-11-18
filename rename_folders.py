@@ -1,7 +1,7 @@
 import os
 import sys
 
-def rename_folders_recursively(root_dir):
+def rename_folders_recursively(root_dir, replaced_char, new_char):
     """
     Walks through a directory tree from the bottom up and renames
     any directories that contain spaces, replacing them with underscores.
@@ -14,9 +14,9 @@ def rename_folders_recursively(root_dir):
     
     for dirpath, dirnames, filenames in os.walk(root_dir, topdown=False):
         for dirname in dirnames:
-            if main.replacedCharacter in dirname:
+            if replaced_char in dirname:
                 old_path = os.path.join(dirpath, dirname)
-                new_name = dirname.replace(f"{main.replacedCharacter}", f"{main.newCharacter}")
+                new_name = dirname.replace(f"{replaced_char}", f"{new_char}")
                 new_path = os.path.join(dirpath, new_name)
                 
                 print(f"Renaming: '{old_path}'")
@@ -32,9 +32,9 @@ def main():
     # Get the target directory from the user
     target_directory = input("Please enter the full path to the directory you want to process: ")
     clearScreen()
-    replacedCharacter = input("Please enter the chacracter you would like to replace:")
+    replaced_character = input("Please enter the chacracter you would like to replace:")
     clearScreen()
-    newCharacter = input(f"Please enter the character you woukd like to replace '{replacedCharacter}' with:")
+    new_character = input(f"Please enter the character you woukd like to replace '{replaced_character}' with:")
     clearScreen()
     
     # Clean up the path (e.g., remove trailing slashes or quotes)
@@ -47,7 +47,7 @@ def main():
         
     # Ask for confirmation before proceeding
     print("\n--- WARNING ---")
-    print(f"You are about to rename all subfolders containing {replacedCharacter} inside:")
+    print(f"You are about to rename all subfolders containing {replaced_character} inside:")
     print(f"{target_directory}")
     print("This action cannot be undone automatically.")
     
@@ -55,7 +55,7 @@ def main():
     
     if confirm == 'y':
         print("\nStarting rename process...")
-        rename_folders_recursively(target_directory)
+        rename_folders_recursively(target_directory, replaced_character, new_character)
         print("\nProcess complete.")
     if confirm == 'n':
         print("\nOperation cancelled. No changes were made.")
