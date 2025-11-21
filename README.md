@@ -1,1 +1,1 @@
-run with python 3
+Run with latest version of python.
